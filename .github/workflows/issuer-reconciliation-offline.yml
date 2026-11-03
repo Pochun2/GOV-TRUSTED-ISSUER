@@ -1,0 +1,21 @@
+name: Issuer remote reconciliation contract tests (offline)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  issuer-reconciliation-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline Check Run reconciliation contract tests
+        run: python -B -m unittest discover -s tests -p 'test_issuer_reconciliation.py' -v
+      - name: Read-only trust boundary
+        run: echo 'FIXTURES_ONLY NO_TOKEN NO_APP_KEY NO_CHECK_RUN_WRITE NO_ATTESTATION GATE_A_BLOCKED'
