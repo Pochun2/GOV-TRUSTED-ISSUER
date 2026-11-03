@@ -1,0 +1,21 @@
+name: Issuer issuance transaction tests (offline)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  issuer-transaction-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline SQLite transaction and crash tests
+        run: python -B -m unittest discover -s tests -p 'test_issuer_transaction.py' -v
+      - name: No real publisher, no token
+        run: echo 'MOCK_ONLY NO_TOKEN NO_APP_KEY NO_CHECK_RUN NO_ISSUANCE GATE_A_BLOCKED'
