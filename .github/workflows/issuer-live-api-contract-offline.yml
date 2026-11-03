@@ -1,0 +1,21 @@
+name: Issuer live API provenance contract tests (offline)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  issuer-live-api-contract-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: All issuer offline tests (no token or network)
+        run: python -B -m unittest discover -s tests -v
+      - name: Scope boundary
+        run: echo 'NO_APP_KEY NO_TOKEN NO_LIVE_API_IN_CI NO_CHECK_RUN NO_ATTESTATION GATE_A_BLOCKED'
