@@ -1,0 +1,21 @@
+name: Issuer paired observation contracts (offline)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  issuer-pair-observer-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic paired observations only; no GitHub API calls
+        run: python -B -m unittest discover -s tests -p 'test_issuer_pair_observer.py' -v
+      - name: Trust boundary
+        run: echo 'NO_TOKEN NO_APP_KEY NO_CHECK_RUN NO_ISSUANCE GATE_A_BLOCKED'
