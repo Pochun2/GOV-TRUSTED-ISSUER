@@ -1,0 +1,21 @@
+name: Issuer App authorization boundary tests (offline)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  issuer-app-boundary-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic permission and installation boundary tests only
+        run: python -B -m unittest discover -s tests -p 'test_issuer_app_boundary.py' -v
+      - name: No issuance
+        run: echo 'NO_JWT NO_PRIVATE_KEY NO_INSTALLATION_TOKEN NO_CHECK_RUN GATE_A_BLOCKED'
