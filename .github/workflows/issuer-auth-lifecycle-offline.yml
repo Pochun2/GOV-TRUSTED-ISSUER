@@ -1,0 +1,21 @@
+name: Issuer App authentication lifecycle contracts (offline)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  issuer-auth-lifecycle-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Metadata-only mock identity lifecycle tests
+        run: python -B -m unittest discover -s tests -p 'test_issuer_auth_lifecycle.py' -v
+      - name: Trust boundary
+        run: echo 'OFFLINE_FIXTURES_ONLY NO_JWT_SIGNING NO_PRIVATE_KEY NO_TOKEN NO_CHECK_RUN_GATE_A_BLOCKED'
