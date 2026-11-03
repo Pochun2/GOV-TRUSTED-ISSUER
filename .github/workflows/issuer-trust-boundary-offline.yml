@@ -1,0 +1,21 @@
+name: Issuer workflow trust boundary tests (offline)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  issuer-trust-boundary-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Mock-only SHA pin and workflow identity tests
+        run: python -B -m unittest discover -s tests -p 'test_issuer_trust_boundary.py' -v
+      - name: No issuer capability
+        run: echo 'NO_APP_KEY NO_AUTHENTICATED_ISSUANCE NO_CHECK_RUN GATE_A_BLOCKED'
