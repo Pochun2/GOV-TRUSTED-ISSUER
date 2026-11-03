@@ -1,0 +1,1 @@
+{"schema_version":"2.0","entry_id":"GOV-AUTO-REVIEW-008-NEGATIVE-001","timestamp_utc":"2026-11-03T05:42:14.507657Z","summary":"Temporary required CI fail-closed test","baseline_sha":"d8f909aa78ae7c507e7232aba0e49549398adfad","code_files":[".github/workflows/issuer-negative-control.yml"],"status":"NEGATIVE_TEST_ONLY"}

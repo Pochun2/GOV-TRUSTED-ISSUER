@@ -1,0 +1,11 @@
+name: Issuer CI negative control
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  issuer-snapshot-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Intentional failure for Ruleset verification
+        run: exit 1
