@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "purpose": "offline source handoff only, WinError 32 test fix",
+  "files": [
+    {
+      "path": ".github/workflows/issuer-snapshot-offline.yml",
+      "sha256": "ba1c88983829e44cc93756e6a915151c138adc8c5ef276990263216482a415bc",
+      "bytes": 605
+    },
+    {
+      "path": "README.md",
+      "sha256": "752bec9788108af7a9895638f700434ba7f18bf6d29fb090f26eea255759e2a1",
+      "bytes": 1446
+    },
+    {
+      "path": "docs/ISSUER-SNAPSHOT-HANDOFF.md",
+      "sha256": "b92937d615b46aafdb151acdebf9ca58860fc14789bdf1b767a31c64ca281b71",
+      "bytes": 2738
+    },
+    {
+      "path": "tests/test_issuer_snapshot_gate.py",
+      "sha256": "65d7968213e6d5b747fcf998b0591773f3baefa86656aee34db47391e4c8548d",
+      "bytes": 4420
+    },
+    {
+      "path": "validator/issuer_snapshot_gate.py",
+      "sha256": "e6587f04de5a241999f1d292dee461fa29198b2c6eaa1b0749e39d7e29fd9946",
+      "bytes": 5135
+    }
+  ]
+}
